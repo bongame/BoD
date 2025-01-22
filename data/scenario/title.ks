@@ -1,33 +1,22 @@
 
 [cm]
 
-;臨時テスト用ジャンプ
 @clearstack
-[call storage="var_reset.ks" ]
-[playbgm storage="retro.mp3" ]
-[bg storage="title.jpg" time="100"]
-@wait time="200"
+; @bg storage ="title.jpg" time=100
+@wait time = 200
+
 *start 
 
-;デバッグ時はこれ使う
-; [eval exp="sf.Clear01 = `true`"]
-; [eval exp="sf.Clear02 = `true`"]
-
-[glink color="bth02" width="200" x="20" y="200" text="CHAPTER" target="**newgame" cond="sf.Clear00 != `true`" ]
-[glink color="bth02" width="200" x="20" y="200" text="CHAPTER" target="*chapter" cond="sf.Clear00 == `true`" ]
-[glink color="bth02" width="200" x="20" y="300" text="LOAD" role="load"]
-[glink color="bth02" width="200" x="20" y="400" text="ARCHIVE" storage="cg.ks" ]
-[glink color="bth02" width="200" x="20" y="500" text="OPTION" role="sleepgame" storage="config.ks"]
+[button x=135 y=230 graphic="title/button_start.png" enterimg="title/button_start2.png"  target="gamestart" keyfocus="1"]
+[button x=135 y=330 graphic="title/button_replay.png" enterimg="title/button_replay2.png" storage="chapter.ks" keyfocus="2"]
+[button x=135 y=430 graphic="title/button_load.png" enterimg="title/button_load2.png" role="load" keyfocus="3"]
+[button x=135 y=530 graphic="title/button_config.png" enterimg="title/button_config2.png" role="sleepgame" storage="config.ks" keyfocus="4"]
 
 [s]
 
-*newgame
+*gamestart
 ;一番最初のシナリオファイルへジャンプする
-@jump storage="opening.ks"
-
-*chapter
-;チャプターへジャンプする
-@jump storage="chapter.ks"
+@jump storage="scene1.ks"
 
 
 
